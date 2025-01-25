@@ -4,4 +4,5 @@
 ![Screenshot](./result2.png)
 
     $ meson setup --prefix=/usr build
-    $ meson install -C build
+    $ meson compile -C build
+    $ ./build/src/scarabeus
