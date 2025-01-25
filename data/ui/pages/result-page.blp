@@ -1,0 +1,50 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $ResultPage : Adw.NavigationPage {
+    title: "Result";
+    tag: "result";
+    
+    Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
+        
+        content: Stack stack {
+            StackPage {
+                name: "loading";
+                
+                child: Adw.Spinner {};
+            }
+            
+            StackPage {
+                name: "error";
+                
+                child: Label { label: "Error loading files"; };
+            }
+            
+            StackPage {
+                name: "empty";
+                
+                child: Label { label: "Corrupted files not found"; };
+            }
+            
+            StackPage {
+                name: "success";
+                
+                child: ScrolledWindow {
+                    
+                    Adw.Clamp {
+                        
+                        ListBox list_box {
+                            selection-mode: none;
+                            margin-bottom: 12;
+                            margin-top: 12;
+                            
+                            styles [ "boxed-list" ]
+                        }
+                    }
+                };
+            }
+        };
+    }
+}

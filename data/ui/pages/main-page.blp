@@ -1,0 +1,90 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MainPage : Adw.NavigationPage {
+    title: "Scarabeus";
+    tag: "main";
+    
+    Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
+        
+        content: Adw.Clamp {
+            maximum-size: 500;
+            
+            Box {
+                orientation: vertical;
+                margin-bottom: 12;
+                margin-top: 12;
+                spacing: 12;
+                
+                ListBox {
+                    selection-mode: none;
+                    
+                    styles [ "boxed-list" ]
+                    
+                    Adw.ActionRow main_info {
+                        title: "Main Folder";
+                        subtitle: "Not selected";
+                    }
+                    
+                    Adw.ButtonRow {
+                        title: "Select";
+                        
+                        activated => $select_main();
+                    }
+                }
+                
+                ListBox {
+                    selection-mode: none;
+                    
+                    styles [ "boxed-list" ]
+                    
+                    Adw.ActionRow sample_info {
+                        title: "Sample folder";
+                        subtitle: "Not selected";
+                    }
+                    
+                    Adw.ButtonRow {
+                        title: "Select";
+                        
+                        activated => $select_sample();
+                    }
+                }
+                
+                ListBox {
+                    selection-mode: none;
+                    
+                    styles [ "boxed-list" ]
+                    
+                    Adw.SpinRow context_size {
+                        title: "Context size";
+                        subtitle: "Number of bytes to show before and after corruption";
+
+                        adjustment: Adjustment {
+                            lower: 20;
+                            upper: 200;
+                            step-increment: 1;
+                            value: 20;
+                        };
+                    }
+                }
+                
+                ListBox {
+                    selection-mode: none;
+                    
+                    styles [ "boxed-list" ]
+                    
+                    Adw.ButtonRow {
+                        title: "Find corrupt files";
+                        sensitive: bind template.search_available;
+                        
+                        styles [ "suggested-action" ]
+                        
+                        activated => $start_search();
+                    }
+                }
+            }
+        };
+    }
+}

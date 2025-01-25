@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+    <gresource prefix="/me/paladin/Scarabeus">
+        <!-- Interface -->
+        <file alias="main-window.ui" preprocess="xml-stripblanks">ui/main-window.ui</file>
+        <file alias="main-page.ui" preprocess="xml-stripblanks">ui/pages/main-page.ui</file>
+        <file alias="result-page.ui" preprocess="xml-stripblanks">ui/pages/result-page.ui</file>
+    </gresource>
+</gresources>
