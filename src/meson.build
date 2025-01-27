@@ -9,7 +9,7 @@ sources = files(
 
 subdir('ui')
 
-app = executable(
+executable(
     output,
     
     resources,

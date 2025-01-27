@@ -23,14 +23,42 @@ public class ResultPage : Adw.NavigationPage {
                 title = item.path
             };
             
-            row.add_row(new Adw.ActionRow() {
-                title = item.main_content,
-                subtitle = (string) item.main_bytes
+            var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 3) {
+                margin_end = 12,
+                margin_start = 12,
+                margin_top = 6,
+                margin_bottom = 6
+            };
+            box.append(new Gtk.Label(item.main_content) {
+                use_markup = true,
+                css_classes = { "title" },
+                wrap = true
             });
-            row.add_row(new Adw.ActionRow() {
-                title = item.sample_content,
-                subtitle = (string) item.sample_bytes
+            box.append(new Gtk.Label((string) item.main_bytes) {
+                css_classes = { "subtitle" },
+                halign = Gtk.Align.START,
+                wrap = true
             });
+            row.add_row(box);
+            
+            
+            box = new Gtk.Box(Gtk.Orientation.VERTICAL, 3) {
+                margin_end = 12,
+                margin_start = 12,
+                margin_top = 6,
+                margin_bottom = 6
+            };
+            box.append(new Gtk.Label(item.sample_content) {
+                use_markup = true,
+                css_classes = { "title" },
+                wrap = true
+            });
+            box.append(new Gtk.Label((string) item.sample_bytes) {
+                css_classes = { "subtitle" },
+                halign = Gtk.Align.START,
+                wrap = true
+            });
+            row.add_row(box);
             
             return row;
         });
